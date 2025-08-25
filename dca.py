@@ -70,15 +70,24 @@ if st.button("🚀 Run DCA Simulation"):
     st.write(f"**Profit:** {final_value - total_invested:,.2f} USD")
 
     # Chart
-    plt.style.use("dark_background")  # 🌙 Đổi sang nền đen
-    plt.figure(figsize=(10, 5))
+    plt.style.use("dark_background")  
+    plt.figure(figsize=(10, 5), facecolor="#0e1117")  
+    ax = plt.gca()
+    ax.set_facecolor("#0a0f1f") 
     
-    plt.plot(df["Date"], df["Total Units"] * data.values, label="DCA Value")
-    plt.plot(data.index, data.values / data.values[0] * total_invested, label="Lump Sum")
-    plt.title(f"DCA vs Lump Sum for {ticker}")
-    plt.xlabel("Date")
-    plt.ylabel("Portfolio Value (USD)")
-    plt.legend()
+    # Vẽ DCA Value màu cyan
+    plt.plot(df["Date"], df["Total Units"] * data.values, 
+             label="DCA Value", color="cyan", linewidth=2)
     
-    st.pyplot(plt.gcf())
+    # Vẽ Lump Sum màu vàng
+    plt.plot(data.index, data.values / data.values[0] * total_invested, 
+             label="Lump Sum", color="yellow", linewidth=2)
     
+    plt.title(f"DCA vs Lump Sum for {ticker}", color="white")
+    plt.xlabel("Date", color="white")
+    plt.ylabel("Portfolio Value (USD)", color="white")
+    
+    plt.legend(facecolor="#0a0f1f", edgecolor="white", labelcolor="white")
+    plt.tick_params(colors="white")
+    
+
