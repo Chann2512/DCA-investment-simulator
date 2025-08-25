@@ -90,4 +90,5 @@ if st.button("🚀 Run DCA Simulation"):
     plt.legend(facecolor="#0a0f1f", edgecolor="white", labelcolor="white")
     plt.tick_params(colors="white")
     
+    st.pyplot(plt.gcf())
 
