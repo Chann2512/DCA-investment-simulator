@@ -29,6 +29,10 @@ if st.button("Tính toán"):
         units.append([date, price, buy_units, total_units])
 
     df = pd.DataFrame(units, columns=["Date", "Price", "Units Bought", "Total Units"])
+    if data is None or data.empty:
+    st.error("⚠️ Không có dữ liệu cho mã chứng khoán hoặc khoảng thời gian đã nhập.")
+    st.stop()
+else:
     final_value = total_units * data.iloc[-1]
 
     # Hiển thị kết quả
@@ -42,4 +46,5 @@ if st.button("Tính toán"):
     plt.plot(df["Date"], df["Total Units"] * data.values, label="Giá trị DCA")
     plt.plot(data.index, data.values / data.values[0] * total_invested, label="Mua 1 lần")
     plt.legend()
+
     st.pyplot(plt.gcf())
