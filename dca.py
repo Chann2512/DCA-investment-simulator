@@ -24,7 +24,7 @@ st.markdown("Examples: `BTC`, `ETH`, `BNB`, `SOL`, `ADA` ...")
 ticker = st.text_input("Crypto symbol", "BTC").upper()
 currency = "USD"
 amount = st.number_input("💵 Investment per period (USD)", value=100)
-freq = st.selectbox("📅 Frequency", ["day", "hour"])  # cryptocompare supports daily/hourly
+freq = st.selectbox("📅 Frequency", ["day", "hour","month","year"])  # cryptocompare supports daily/hourly/monthly/yearly
 start = st.date_input("📆 Start date", pd.to_datetime("2020-01-01"))
 end = st.date_input("📆 End date")
 
@@ -79,7 +79,7 @@ if st.button("🚀 Run DCA Simulation"):
     plt.plot(df["Date"], df["Total Units"] * data.values, 
              label="DCA Value", color="cyan", linewidth=2)
     
-    # Vẽ Lump Sum màu vàng
+    # Lump Sum Line
     plt.plot(data.index, data.values / data.values[0] * total_invested, 
              label="Lump Sum", color="yellow", linewidth=2)
     
@@ -91,4 +91,5 @@ if st.button("🚀 Run DCA Simulation"):
     plt.tick_params(colors="white")
     
     st.pyplot(plt.gcf())
+
 
