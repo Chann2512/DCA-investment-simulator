@@ -14,7 +14,8 @@ This app allows you to **simulate a Dollar-Cost Averaging (DCA) strategy** on cr
 - Choose an investment amount and frequency.  
 - The app simulates periodic investments (DCA) and compares it with a one-time **Lump Sum** investment.  
 
-📌 **Data source:** [CryptoCompare](https://www.cryptocompare.com/)  
+📌 **Data source:** [Yahoo Finance](https://finance.yahoo.com/) 
+  
 """)
 
 # 👉 Markdown hướng dẫn nhập mã crypto
@@ -91,5 +92,6 @@ if st.button("🚀 Run DCA Simulation"):
     plt.tick_params(colors="white")
     
     st.pyplot(plt.gcf())
+
 
 
